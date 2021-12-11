@@ -26,8 +26,8 @@ public class prev_drum : MonoBehaviour
             arrow.GetComponent<Renderer>().material = hit;
             if (pad.GetComponent<drum_pad>().sample_choice == 0)
             {
-                //Ideally this would pop up as a tooltip by controller or pad
-                print("This is first drum choice, cannot go back further\n");
+                //Loop back to last drum choice
+                pad.GetComponent<drum_pad>().sample_choice = pad.GetComponent<drum_pad>().samples.Length - 1;
                 clicked = false;
             }
             else
@@ -40,5 +40,17 @@ public class prev_drum : MonoBehaviour
         {
             arrow.GetComponent<Renderer>().material = regular;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.TryGetComponent(out drum_stick end))
+        {
+            clicked = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+
     }
 }

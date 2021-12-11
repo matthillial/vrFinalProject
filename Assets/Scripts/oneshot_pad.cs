@@ -11,7 +11,7 @@ public class oneshot_pad : MonoBehaviour
 
 
     //0-1 float - changes volume of played clip
-    float clip_velocity = 1.0f;
+    public float clip_velocity = 1.0f;
     public int cur_note;
     int cur_octave;
     string[] notes = new string[12] { "C", "C#" ,"D","D#","E","F","F#","G","G#","A","A#","B"};
@@ -26,7 +26,6 @@ public class oneshot_pad : MonoBehaviour
     public bool hit = false;
     float playstart;
 
-    public GameObject drumstick;
     public GameObject note_text;
     public GameObject instrument_text;
     //Takes in a key from 0-71 and gives 
@@ -72,5 +71,20 @@ public class oneshot_pad : MonoBehaviour
             cur_material = note_materials[cur_note % 12];
             this.gameObject.GetComponent<Renderer>().material = cur_material;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.TryGetComponent(out drum_stick end))
+        {
+            print("Hit with velocity " + end.v);
+            //normalize from 0-1
+            clip_velocity = end.v / 10f;
+            hit = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+
     }
 }

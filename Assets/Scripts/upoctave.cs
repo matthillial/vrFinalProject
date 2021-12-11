@@ -45,4 +45,16 @@ public class upoctave : MonoBehaviour
             arrow2.GetComponent<Renderer>().material = regular;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.TryGetComponent(out drum_stick end))
+        {
+            clicked = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+
+    }
 }
