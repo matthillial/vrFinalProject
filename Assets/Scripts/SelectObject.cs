@@ -52,6 +52,7 @@ public class SelectObject : MonoBehaviour
                 }
                 else
                 {
+                    selected = null;
                     laserPointer.material = default_material;
                 }
             }
@@ -72,6 +73,7 @@ public class SelectObject : MonoBehaviour
         if (canSelect)
         {
             Debug.Log("INSTANTIATED METHOD");
+            Debug.Log(spawn_point.position);
             Instantiate(selected, spawn_point.position, Quaternion.identity);
             canSelect = false;
         }
