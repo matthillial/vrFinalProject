@@ -14,8 +14,8 @@ public class GraspGrabber : Grabber
         grabbedObject = null;
         currentObject = null;
         Debug.Log("Start");
-        Debug.Log("current obect is " + currentObject);
-        Debug.Log("current obect is " + grabbedObject);
+        Debug.Log(currentObject == null);
+        Debug.Log(grabbedObject == null);
 
 
         grabAction.action.performed += Grab;
@@ -37,9 +37,11 @@ public class GraspGrabber : Grabber
     public override void Grab(InputAction.CallbackContext context)
     {
         Debug.Log("Grab");
+        Debug.Log(currentObject == null);
+        Debug.Log(currentObject == null);
         if (currentObject && grabbedObject == null)
         {
-            Debug.Log("Null");
+            Debug.Log("AHHHHHH");
             if (currentObject.GetCurrentGrabber() != null)
             {
                 currentObject.GetCurrentGrabber().Release(new InputAction.CallbackContext());
@@ -47,8 +49,7 @@ public class GraspGrabber : Grabber
 
             grabbedObject = currentObject;
             grabbedObject.SetCurrentGrabber(this);
-            Debug.Log("current obect is " + currentObject.name);
-            Debug.Log("current obect is " + grabbedObject.name);
+            
 
             if (grabbedObject.GetComponent<Rigidbody>())
             {
@@ -56,6 +57,7 @@ public class GraspGrabber : Grabber
             }
 
             grabbedObject.transform.parent = this.transform;
+            Debug.Log("moving");
         }
     }
 
@@ -78,18 +80,23 @@ public class GraspGrabber : Grabber
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter");
+        Debug.Log("Trigger Enter ");
+        Debug.Log(currentObject == null);
+        Debug.Log(other);
+        //Debug.Log(other.GetComponent<Grabbable>());
+
         if (currentObject == null && other.GetComponent<Grabbable>())
         {
+            Debug.Log("Trigger Enter");
             currentObject = other.gameObject.GetComponent<Grabbable>();
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Trigger Exit");
         if (currentObject)
         {
+            Debug.Log("Trigger Exit");
             if (other.GetComponent<Grabbable>() && currentObject.GetInstanceID() == other.GetComponent<Grabbable>().GetInstanceID())
             {
                 currentObject = null;

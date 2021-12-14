@@ -74,6 +74,7 @@ public class oneshot_pad : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("hitting one shot");
 
         if (collision.gameObject.TryGetComponent(out drum_stick end))
         {
