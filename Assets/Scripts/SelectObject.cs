@@ -74,7 +74,11 @@ public class SelectObject : MonoBehaviour
         {
             Debug.Log("INSTANTIATED METHOD");
             Debug.Log(spawn_point.position);
-            Instantiate(selected, spawn_point.position, Quaternion.identity);
+            GameObject spawned = Instantiate(selected, spawn_point.position, Quaternion.identity);
+            spawned.AddComponent<Grabbable>();
+            spawned.AddComponent<Rigidbody>();
+            spawned.GetComponent<Rigidbody>().isKinematic = false;
+            spawned.GetComponent<Rigidbody>().useGravity = false;
             canSelect = false;
         }
     }
