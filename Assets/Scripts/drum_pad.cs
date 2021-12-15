@@ -72,7 +72,7 @@ public class drum_pad : MonoBehaviour
             this.gameObject.GetComponent<Renderer>().material = cur_material;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
 
         if (collision.gameObject.TryGetComponent(out drum_stick end))

@@ -36,12 +36,8 @@ public class GraspGrabber : Grabber
 
     public override void Grab(InputAction.CallbackContext context)
     {
-        Debug.Log("Grab");
-        Debug.Log(currentObject == null);
-        Debug.Log(currentObject == null);
         if (currentObject && grabbedObject == null)
         {
-            Debug.Log("AHHHHHH");
             if (currentObject.GetCurrentGrabber() != null)
             {
                 currentObject.GetCurrentGrabber().Release(new InputAction.CallbackContext());
@@ -68,7 +64,6 @@ public class GraspGrabber : Grabber
         {
             if (grabbedObject.GetComponent<Rigidbody>())
             {
-                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 grabbedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
 
@@ -81,7 +76,7 @@ public class GraspGrabber : Grabber
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger Enter ");
-        Debug.Log(currentObject == null);
+        Debug.Log(currentObject);
         Debug.Log(other);
         //Debug.Log(other.GetComponent<Grabbable>());
 

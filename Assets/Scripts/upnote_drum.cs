@@ -42,7 +42,7 @@ public class upnote_drum : MonoBehaviour
             arrow.GetComponent<Renderer>().material = regular;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
 
         if (collision.gameObject.TryGetComponent(out drum_stick end))

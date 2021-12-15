@@ -72,7 +72,7 @@ public class oneshot_pad : MonoBehaviour
             this.gameObject.GetComponent<Renderer>().material = cur_material;
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("hitting one shot");
 
@@ -83,9 +83,5 @@ public class oneshot_pad : MonoBehaviour
             clip_velocity = end.v / 10f;
             hit = true;
         }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-
     }
 }

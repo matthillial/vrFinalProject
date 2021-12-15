@@ -17,13 +17,18 @@ public class SelectObject : MonoBehaviour
     public GameObject[] select_options;
     RaycastHit hit;
 
+    public GameObject controller;
+    public GameObject drumstick;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        controller.SetActive(true);
+        drumstick.SetActive(false);
         toggle.action.performed += ToggleMode;
         select.action.performed += Select;
-        laserPointer.enabled = false;
+        laserPointer.enabled = true;
         canSelect = false;
     }
 
@@ -56,14 +61,6 @@ public class SelectObject : MonoBehaviour
                     laserPointer.material = default_material;
                 }
             }
-            else
-            {
-                
-            }
-        }
-        else
-        {
-  
         }
     }
 
@@ -77,7 +74,7 @@ public class SelectObject : MonoBehaviour
             GameObject spawned = Instantiate(selected, spawn_point.position, Quaternion.identity);
             spawned.AddComponent<Grabbable>();
             spawned.AddComponent<Rigidbody>();
-            spawned.GetComponent<Rigidbody>().isKinematic = false;
+            spawned.GetComponent<Rigidbody>().isKinematic = true;
             spawned.GetComponent<Rigidbody>().useGravity = false;
             canSelect = false;
         }
@@ -89,11 +86,15 @@ public class SelectObject : MonoBehaviour
         {
             laserPointer.enabled = false;
             Debug.Log("laser point disabled");
+            drumstick.SetActive(true);
+            controller.SetActive(false);
         }
         else
         {
             laserPointer.enabled = true;
             Debug.Log("laser point enabled");
+            drumstick.SetActive(false);
+            controller.SetActive(true);
         }
         
     }

@@ -25,6 +25,12 @@ public class drum_stick : MonoBehaviour
         v = velocity.magnitude;
         //print("Velocity: " + v);
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        //Debug.Log(collision);
+        //Debug.Log("hitting one shot");
+    }
     //private void OnCollisionEnter(Collider other)
     //{
     //    print("Velocity on impact: " + velocity.magnitude.ToString() + "\n");
