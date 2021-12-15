@@ -33,7 +33,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 1ae7da304db59224498949a21b2a58ba
+    name: distortionLevel
+  - guid: b7532b65ac04ee4488bfd624a3df0dd0
+    name: filterCutoff
   m_AudioMixerGroupViews:
   - guids:
     - 2a7bee240577c2841946ff189f257390
@@ -56,6 +60,8 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 24400004}
   - {fileID: -1155333147619501456}
+  - {fileID: 5289071233590133484}
+  - {fileID: 5218358661638993743}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -84,5 +90,46 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 924effba7d20d9d4a853fa775c0929b1
   m_FloatValues:
-    b7532b65ac04ee4488bfd624a3df0dd0: 5877
+    b7532b65ac04ee4488bfd624a3df0dd0: 6753
+    38e652478bd69fb4bb1cf37daec580d6: 1
   m_TransitionOverrides: {}
+--- !u!244 &5218358661638993743
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 4eb9500cd35efb844858a2301e591d54
+  m_EffectName: Distortion
+  m_MixLevel: c60cfaa2d6dd73b488f412edaac7d314
+  m_Parameters:
+  - m_ParameterName: Level
+    m_GUID: 1ae7da304db59224498949a21b2a58ba
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &5289071233590133484
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c29c891365c8932479a95caa650c6d31
+  m_EffectName: Echo
+  m_MixLevel: 98bde3891b9fcc74e9ddc6ef89e82cd2
+  m_Parameters:
+  - m_ParameterName: Delay
+    m_GUID: d8aee7c846e59a3459dc305265616e8c
+  - m_ParameterName: Decay
+    m_GUID: 1dbcef642dcef504caf704a37ee9511a
+  - m_ParameterName: Max channels
+    m_GUID: 73766458d2ed4aa499b6dcdfd0deb81d
+  - m_ParameterName: Drymix
+    m_GUID: de6b32603a905564693d6debb14b7ca8
+  - m_ParameterName: Wetmix
+    m_GUID: 192acf4a4c395004a9b02b75c7522b15
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 1

@@ -51,6 +51,11 @@ public class GraspGrabber : Grabber
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             }
 
+            if (grabbedObject.GetComponent<Dial>())
+            {
+                grabbedObject.GetComponent<Dial>().moving = true;
+            }
+
             grabbedObject.transform.parent = this.transform;
             Debug.Log("moving");
         }
@@ -65,6 +70,11 @@ public class GraspGrabber : Grabber
             if (grabbedObject.GetComponent<Rigidbody>())
             {
                 grabbedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+
+            if (grabbedObject.GetComponent<Dial>())
+            {
+                grabbedObject.GetComponent<Dial>().Release(this.transform.rotation);
             }
 
             grabbedObject.SetCurrentGrabber(null);
