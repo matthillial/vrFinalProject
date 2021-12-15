@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-5434331923877490661
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 29bc77a7359b206489d261cf8cdffde9
+  m_EffectName: Chorus
+  m_MixLevel: f9d018d6b090c8b4788dc33f54c1a9da
+  m_Parameters:
+  - m_ParameterName: Dry mix
+    m_GUID: 2a94531650d574b48873e799dd2ba600
+  - m_ParameterName: Wet mix tap 1
+    m_GUID: 6fe8efae4dd83ad46ad14fda4ddf2b9f
+  - m_ParameterName: Wet mix tap 2
+    m_GUID: 882cf0d4b9a377340a4f6b7b1c58495e
+  - m_ParameterName: Wet mix tap 3
+    m_GUID: f9f7b559e288c6b4d845cce0f8363d71
+  - m_ParameterName: Delay
+    m_GUID: 8996f99b4a0af3f4498d76481cf31b5c
+  - m_ParameterName: Rate
+    m_GUID: 617aa34d9671e124e8374d21f3bfc71c
+  - m_ParameterName: Depth
+    m_GUID: d4d9cb7323cc4ac46b4e257bb7d4d5bf
+  - m_ParameterName: Feedback
+    m_GUID: a7bd5a3efb28ea84dad8d7eaaebbe5d8
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-2652885153957176125
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 40d82d558b54ca64d867b18d2218a129
+  m_EffectName: Compressor
+  m_MixLevel: a4c730a0234044c4c8031dcd0439f707
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: a9aef737f6e476b4c81e1d1bbbb36253
+  - m_ParameterName: Attack
+    m_GUID: 836305806a0bcbb4bad73fe1e128dc2f
+  - m_ParameterName: Release
+    m_GUID: 208420b986da69b46b29d13423e7f626
+  - m_ParameterName: Make up gain
+    m_GUID: e4ab554c3c95dbb40863128db4f32b77
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-2493351450484973192
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 54b5f937a7d5ee54cb2deeec4d604601
+  m_EffectName: SFX Reverb
+  m_MixLevel: 8bb93056cba927645afa315d206909f8
+  m_Parameters:
+  - m_ParameterName: Dry Level
+    m_GUID: 391e4027267c86442aa2b4e416d4ea76
+  - m_ParameterName: Room
+    m_GUID: 043bc43421b836f48a80996c0294f1e1
+  - m_ParameterName: Room HF
+    m_GUID: 291f6c7ef1b4a9748bfc8f94cc1b712b
+  - m_ParameterName: Decay Time
+    m_GUID: df23543c4ac4899449870735a34c8d7b
+  - m_ParameterName: Decay HF Ratio
+    m_GUID: ab9a20b535fc6a5419108e54cbdae4e7
+  - m_ParameterName: Reflections
+    m_GUID: 9f6db03887d758841956b367c6beaff6
+  - m_ParameterName: Reflect Delay
+    m_GUID: f97b1d0d27f11f646a74d6d53fc0a8f2
+  - m_ParameterName: Reverb
+    m_GUID: c7a9b3a5b86bf4f449f1c48b318884f4
+  - m_ParameterName: Reverb Delay
+    m_GUID: 46bf565d9981ca144b5a105eb915acf4
+  - m_ParameterName: Diffusion
+    m_GUID: 493c46860df02d94988baa49ea1f6eaf
+  - m_ParameterName: Density
+    m_GUID: 524ac59bcf03a1a45acf6073da6825bc
+  - m_ParameterName: HF Reference
+    m_GUID: 53f8bce4e7e27684b9fddef54e169a40
+  - m_ParameterName: Room LF
+    m_GUID: 6ffc528e30ae2784a9874079d6c73360
+  - m_ParameterName: LF Reference
+    m_GUID: 035a652ec6198dc4bb0f55b102df4a57
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-1155333147619501456
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -34,10 +128,26 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: d4d9cb7323cc4ac46b4e257bb7d4d5bf
+    name: chorusDepth
+  - guid: 617aa34d9671e124e8374d21f3bfc71c
+    name: chorusRate
+  - guid: a9aef737f6e476b4c81e1d1bbbb36253
+    name: compressorThreshold
+  - guid: e4ab554c3c95dbb40863128db4f32b77
+    name: compressorGain
   - guid: 1ae7da304db59224498949a21b2a58ba
     name: distortionLevel
+  - guid: 192acf4a4c395004a9b02b75c7522b15
+    name: echoWet
+  - guid: d8aee7c846e59a3459dc305265616e8c
+    name: echoDelay
   - guid: b7532b65ac04ee4488bfd624a3df0dd0
     name: filterCutoff
+  - guid: 38e652478bd69fb4bb1cf37daec580d6
+    name: filterResonance
+  - guid: c7a9b3a5b86bf4f449f1c48b318884f4
+    name: reverbWet
   m_AudioMixerGroupViews:
   - guids:
     - 2a7bee240577c2841946ff189f257390
@@ -59,9 +169,12 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  - {fileID: -1155333147619501456}
-  - {fileID: 5289071233590133484}
+  - {fileID: -2652885153957176125}
   - {fileID: 5218358661638993743}
+  - {fileID: 5289071233590133484}
+  - {fileID: -5434331923877490661}
+  - {fileID: -2493351450484973192}
+  - {fileID: -1155333147619501456}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -91,6 +204,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 924effba7d20d9d4a853fa775c0929b1
   m_FloatValues:
     b7532b65ac04ee4488bfd624a3df0dd0: 6753
+    2a94531650d574b48873e799dd2ba600: 0.5
     38e652478bd69fb4bb1cf37daec580d6: 1
   m_TransitionOverrides: {}
 --- !u!244 &5218358661638993743
@@ -132,4 +246,4 @@ AudioMixerEffectController:
     m_GUID: 192acf4a4c395004a9b02b75c7522b15
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
-  m_Bypass: 1
+  m_Bypass: 0

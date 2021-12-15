@@ -124,6 +124,7 @@ public class Dial : MonoBehaviour
         float oldDialRot = dialRot;
         maxiature = Instantiate(dialHolder, null);
         maxiature.transform.position = hand.transform.position + 0.1f * (hand.transform.rotation * Vector3.forward);
+        maxiature.transform.localScale = new Vector3(1, 1, 1);
         
         Dial newDial = maxiature.GetComponentInChildren<Dial>();
         newDial.dialRot = oldDialRot;
