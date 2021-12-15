@@ -7,16 +7,14 @@ public class GraspGrabber : Grabber
 
     Grabbable currentObject;
     Grabbable grabbedObject;
+    public bool canToggle;
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        canToggle = true;
         grabbedObject = null;
         currentObject = null;
-        Debug.Log("Start");
-        Debug.Log(currentObject == null);
-        Debug.Log(grabbedObject == null);
-
 
         grabAction.action.performed += Grab;
         grabAction.action.canceled += Release;
@@ -36,6 +34,7 @@ public class GraspGrabber : Grabber
 
     public override void Grab(InputAction.CallbackContext context)
     {
+        canToggle = false;
         if (currentObject && grabbedObject == null)
         {
             if (currentObject.GetCurrentGrabber() != null)
@@ -59,6 +58,7 @@ public class GraspGrabber : Grabber
 
     public override void Release(InputAction.CallbackContext context)
     {
+        canToggle = true;
         Debug.Log("Release");
         if (grabbedObject)
         {
@@ -75,14 +75,8 @@ public class GraspGrabber : Grabber
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter ");
-        Debug.Log(currentObject);
-        Debug.Log(other);
-        //Debug.Log(other.GetComponent<Grabbable>());
-
         if (currentObject == null && other.GetComponent<Grabbable>())
         {
-            Debug.Log("Trigger Enter");
             currentObject = other.gameObject.GetComponent<Grabbable>();
         }
     }
@@ -91,7 +85,6 @@ public class GraspGrabber : Grabber
     {
         if (currentObject)
         {
-            Debug.Log("Trigger Exit");
             if (other.GetComponent<Grabbable>() && currentObject.GetInstanceID() == other.GetComponent<Grabbable>().GetInstanceID())
             {
                 currentObject = null;
