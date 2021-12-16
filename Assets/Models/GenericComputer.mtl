@@ -1,0 +1,51 @@
+newmtl Screen_mat
+Ni 1.6
+Ka 0 0 0
+map_Ke GenericComputer/Screen_mat_glow.png
+d 1
+Kd 0 0 0
+map_d GenericComputer/Screen_mat_opacity.png
+Tr 0
+illum 7
+Ks 1 1 1
+adobe_map_roughness GenericComputer/Screen_mat_roughness.png
+adobe_interior_color 1.0 1.0 1.0
+adobe_density 0.0
+map_Pm GenericComputer/Screen_mat_metallic.png
+Ns 16
+adobe_map_translucence GenericComputer/Screen_mat_translucence.png
+map_Kd GenericComputer/Screen_mat_baseColor.png
+newmtl Glass_mat
+Ni 1.6
+Ka 0 0 0
+d 1
+Ke 0.0
+Kd 0 0 0
+map_d GenericComputer/Glass_mat_opacity.png
+Tr 0
+illum 7
+Ks 1 1 1
+adobe_translucence 0.0
+adobe_map_roughness GenericComputer/Glass_mat_roughness.png
+adobe_interior_color 1.0 1.0 1.0
+adobe_density 0.0
+map_Pm GenericComputer/Glass_mat_metallic.png
+Ns 16
+map_Kd GenericComputer/Glass_mat_baseColor.png
+newmtl Metal_mat
+Ni 1.6
+Ka 0 0 0
+d 1
+Ke 0.0
+Kd 0 0 0
+map_d GenericComputer/Metal_mat_opacity.png
+Tr 0
+illum 7
+Ks 1 1 1
+adobe_translucence 0.0
+adobe_map_roughness GenericComputer/Metal_mat_roughness.png
+adobe_interior_color 1.0 1.0 1.0
+adobe_density 0.0
+map_Pm GenericComputer/Metal_mat_metallic.png
+Ns 16
+map_Kd GenericComputer/Metal_mat_baseColor.png
