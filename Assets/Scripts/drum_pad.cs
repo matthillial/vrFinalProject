@@ -78,7 +78,7 @@ public class drum_pad : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out drum_stick end))
         {
             print("Hit with velocity " + end.v);
-            clip_velocity = end.v / 10f;
+            clip_velocity = end.v / 8f;
             hit = true;
         }
     }

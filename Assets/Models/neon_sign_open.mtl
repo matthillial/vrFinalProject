@@ -1,0 +1,36 @@
+newmtl plastic_MAT
+Ni 1.6
+Ka 0 0 0
+map_Ke neon_sign_open/plastic_MAT_glow.png
+d 1
+Kd 0 0 0
+adobe_map_normal neon_sign_open/plastic_MAT_normal.png
+map_d neon_sign_open/plastic_MAT_opacity.png
+Tr 0
+illum 7
+Ks 1 1 1
+adobe_translucence 0.0
+adobe_map_roughness neon_sign_open/plastic_MAT_roughness.png
+adobe_interior_color 1.0 1.0 1.0
+adobe_density 0.0
+map_Pm neon_sign_open/plastic_MAT_metallic.png
+Ns 16
+map_Kd neon_sign_open/plastic_MAT_baseColor.png
+newmtl neon_MAT
+Ni 1.6
+Ka 0 0 0
+map_Ke neon_sign_open/neon_MAT_glow.png
+d 1
+Kd 0 0 0
+adobe_map_normal neon_sign_open/neon_MAT_normal.png
+map_d neon_sign_open/neon_MAT_opacity.png
+Tr 0
+illum 7
+Ks 1 1 1
+adobe_translucence 0.0
+adobe_map_roughness neon_sign_open/neon_MAT_roughness.png
+adobe_interior_color 1.0 1.0 1.0
+adobe_density 0.0
+map_Pm neon_sign_open/neon_MAT_metallic.png
+Ns 16
+map_Kd neon_sign_open/neon_MAT_baseColor.png
