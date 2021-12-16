@@ -80,7 +80,7 @@ public class oneshot_pad : MonoBehaviour
         {
             print("Hit with velocity " + end.v);
             //normalize from 0-1
-            clip_velocity = end.v / 10f;
+            clip_velocity = end.v / 8f;
             hit = true;
         }
     }
