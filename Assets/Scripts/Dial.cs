@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public class Dial : MonoBehaviour
 {
     Quaternion initRot;
-    int degreeLimit = 160;
+    int degreeLimit = 140;
 
     public float dialRot = 0;
 
@@ -28,14 +28,13 @@ public class Dial : MonoBehaviour
 
     public bool miniature;
     public GameObject maxiature;
-        
+
 
     // Start is called before the first frame update
     void Start()
     {
         initRot = this.transform.rotation.normalized;
         Vector3 normal = (initRot * Vector3.down).normalized;
-        Debug.Log(normal);
 
 
     }
@@ -50,16 +49,23 @@ public class Dial : MonoBehaviour
 
             float deltaAngle = getDeltaAngle(trackerPos, previousTrackerPos);
 
+            if (deltaAngle > 350) { deltaAngle -= 360; }
+            if (deltaAngle < -350) { deltaAngle += 360; }
+            if (Mathf.Abs(deltaAngle) > 90) { deltaAngle = 0; }
+
             dialRot += deltaAngle;
 
             previousTrackerPos = trackerPos;
-
         }
         if (grabbedL)
         {
             Vector3 trackerPos = lHand.transform.Find("Tracker").transform.position;
 
             float deltaAngle = getDeltaAngle(trackerPos, previousTrackerPos);
+
+            if (deltaAngle > 350) { deltaAngle -= 360; }
+            if (deltaAngle < -350) { deltaAngle += 360; }
+            if (Mathf.Abs(deltaAngle) > 90) { deltaAngle = 0; }
 
             dialRot += deltaAngle;
 
@@ -69,14 +75,10 @@ public class Dial : MonoBehaviour
         {
             dialRot = maxiature.GetComponentInChildren<Dial>().dialRot;
         }
-        dialRot = Mathf.Max(dialRot, -degreeLimit);
-        dialRot = Mathf.Min(dialRot, degreeLimit);
-        //this.transform.rotation = initRot * Quaternion.Euler(0, (value - 0.5f) * 2f * degreeLimit, 0) ;
+        dialRot = Mathf.Clamp(dialRot, -degreeLimit, degreeLimit);
 
-        //this.transform.localRotation =  initRot * Quaternion.Euler(0, dialRot, 0) ;
-        this.transform.localRotation =  Quaternion.Euler(0, dialRot, 0);
+        this.transform.localRotation = Quaternion.Euler(0, dialRot, 0);
 
-        //if (!moving) { this.transform.rotation = initRot * this.transform.rotation; }
         mixer.SetFloat(parameterName, Mathf.Lerp(min, max, GetValue()));
 
     }
@@ -125,7 +127,7 @@ public class Dial : MonoBehaviour
         maxiature = Instantiate(dialHolder, null);
         maxiature.transform.position = hand.transform.position + 0.1f * (hand.transform.rotation * Vector3.forward);
         maxiature.transform.localScale = new Vector3(1, 1, 1);
-        
+
         Dial newDial = maxiature.GetComponentInChildren<Dial>();
         newDial.dialRot = oldDialRot;
         newDial.miniature = false;

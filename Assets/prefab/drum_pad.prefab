@@ -743,7 +743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3503046882166222497}
   - component: {fileID: 8489826272399721177}
-  - component: {fileID: 8806336592325093347}
+  - component: {fileID: 6804201491145652688}
   m_Layer: 0
   m_Name: drum_pad
   m_TagString: Untagged
@@ -780,23 +780,21 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.47, y: 1.04, z: 1.09}
-  m_Center: {x: -0.18, y: 1.83, z: 0}
---- !u!54 &8806336592325093347
-Rigidbody:
+  m_Center: {x: -0.18, y: -0.01, z: 0}
+--- !u!114 &6804201491145652688
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3503046882166222430}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc372921f5c7d3947a97255f9d33b014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padIsGrabbed: 0
+  twoHand: 0
 --- !u!1 &3503046882470298472
 GameObject:
   m_ObjectHideFlags: 0
