@@ -12,8 +12,6 @@ public class replaymanager : MonoBehaviour
     //public InputAction left_record = new InputAction(type: InputActionType.Button, binding: "<XRController>{LeftHand}/secondaryButton");
     public InputAction left_record;
 
-    public AudioSource metronome_sound;
-
     public GameObject drumstick;
     public GameObject right_drumstick;
     public GameObject right_child;
