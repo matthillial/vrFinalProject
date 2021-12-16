@@ -57,7 +57,6 @@ public class replaymanager : MonoBehaviour
     {
         right_record.Enable();
         left_record.Enable();
-
     }
     private void OnDestroy()
     {
@@ -106,9 +105,9 @@ public class replaymanager : MonoBehaviour
             {
                 right_frame = 0;
             }
-            right_clone.transform.position = right_play_positions[right_frame];
-            right_clone.transform.rotation = right_play_rotations[right_frame];
-            right_frame++;
+                right_clone.transform.position = right_play_positions[right_frame];
+                right_clone.transform.rotation = right_play_rotations[right_frame];
+                right_frame++;
         }
         if (left_playing)
         {
@@ -125,7 +124,7 @@ public class replaymanager : MonoBehaviour
     public void record_right()
     {
         //Debug.Log("Right started to record");
-        if(right_drumstick == null)
+        if(right_drumstick.activeSelf == false)
         {
 
         }
@@ -146,7 +145,7 @@ public class replaymanager : MonoBehaviour
     public void stop_right_and_loop()
     {
        //Debug.Log("Right stopped recording");
-        if (right_drumstick == null)
+        if (right_drumstick.activeSelf == false)
         {
 
         }
@@ -154,7 +153,6 @@ public class replaymanager : MonoBehaviour
         {
             right_child.GetComponent<Renderer>().material = default_mat;
             right_clone = Instantiate(drumstick);
-            //right_play = right_transforms.ToArray();
             right_play_positions = right_positions.ToArray();
             right_play_rotations = right_rotations.ToArray();
             right_recorded = true;
@@ -165,7 +163,7 @@ public class replaymanager : MonoBehaviour
     public void record_left()
     {
         //Debug.Log("Left started to record");
-        if (left_drumstick == null)
+        if (left_drumstick.activeSelf == false)
         {
 
         }
@@ -186,7 +184,7 @@ public class replaymanager : MonoBehaviour
     public void stop_left_and_loop()
     {
        //Debug.Log("Left stopped recording");
-        if (left_drumstick == null)
+        if (left_drumstick.activeSelf == false)
         {
 
         }
