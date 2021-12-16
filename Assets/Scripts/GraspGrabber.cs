@@ -97,10 +97,15 @@ public class GraspGrabber : Grabber
             if (grabbedObject.GetComponent<Dial>())
             {
                 grabbedObject.GetComponent<Dial>().Release(this.transform.rotation);
+                Debug.Log("Grasp Release Dial");
             }
 
-            grabbedObject.GetComponent<IsGrabbed>().padIsGrabbed = false;
-            grabbedObject.GetComponent<IsGrabbed>().twoHand = false;
+            if (grabbedObject.GetComponent<IsGrabbed>())
+            {
+                grabbedObject.GetComponent<IsGrabbed>().padIsGrabbed = false;
+                grabbedObject.GetComponent<IsGrabbed>().twoHand = false;
+            }
+            
             scale = false;
             grabbedObject.SetCurrentGrabber(null);
             grabbedObject.transform.parent = null;

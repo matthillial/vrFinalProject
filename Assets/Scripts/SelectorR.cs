@@ -28,19 +28,21 @@ public class SelectorR : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
             {
                 //laserPointer.SetPosition(1, new Vector3(0, 0, hit.distance));
-                //Debug.Log("Hit");
+                Debug.Log("SelectorR Hit");
                 dial = hit.collider.GetComponentInChildren<Dial>();
                 //hit.collider.GetCom
 
                 if (dial)
                 {
+                    Debug.Log("Its a Dial!");
                     if(dial.miniature)
                     {
+                        Debug.Log("Its a Baby Dial!");
                         dial = dial.initMaxiature(transform);
                         //maxiature.GetCompon
                     }
-                    dial.GrabbedR();
-                    Debug.Log("Dial");
+                    //dial.GrabbedR();
+                    //Debug.Log("Dial");
                     //dial.grabbedR = true;
                     grabbed = true;
                     

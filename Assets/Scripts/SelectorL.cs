@@ -36,7 +36,7 @@ public class SelectorL : MonoBehaviour
                     Debug.Log("Dial");
                     //dial.grabbedR = true;
                     grabbed = true;
-                    dial.GrabbedL();
+                    //dial.GrabbedL();
                 }
             }
         }

@@ -14,11 +14,13 @@ public class Dial : MonoBehaviour
 
     public bool grabbedR = false;
     public bool grabbedL = false;
+    public bool grabbed = false;
     public bool moving = false;
 
     //public InputActionProperty rTrig;
     public GameObject rHand;
     public GameObject lHand;
+    public GameObject grabHand;
     Vector3 previousTrackerPos;
 
     public AudioMixer mixer;
@@ -42,8 +44,21 @@ public class Dial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (grabbed)
+        {
+            Vector3 trackerPos = grabHand.transform.Find("Tracker").transform.position;
 
-        if (grabbedR)
+            float deltaAngle = getDeltaAngle(trackerPos, previousTrackerPos);
+
+            if (deltaAngle > 350) { deltaAngle -= 360; }
+            if (deltaAngle < -350) { deltaAngle += 360; }
+            if (Mathf.Abs(deltaAngle) > 90) { deltaAngle = 0; }
+
+            dialRot += deltaAngle;
+
+            previousTrackerPos = trackerPos;
+        }
+        /*if (grabbedR)
         {
             Vector3 trackerPos = rHand.transform.Find("Tracker").transform.position;
 
@@ -70,7 +85,7 @@ public class Dial : MonoBehaviour
             dialRot += deltaAngle;
 
             previousTrackerPos = trackerPos;
-        }
+        }*/
         if (miniature && maxiature != null)
         {
             dialRot = maxiature.GetComponentInChildren<Dial>().dialRot;
@@ -87,6 +102,7 @@ public class Dial : MonoBehaviour
     {
         initRot = newRot;
         moving = false;
+        Debug.Log("Dial release dial");
     }
 
     float GetValue()
@@ -94,12 +110,22 @@ public class Dial : MonoBehaviour
         return (dialRot / (degreeLimit / 2f)) + 0.5f;
     }
 
-    public void GrabbedR()
+    public void Grabbed(GameObject hand)
+    {
+        Vector3 normal = (initRot * Vector3.down).normalized;
+        grabHand = hand;
+        previousTrackerPos = grabHand.transform.Find("Tracker").transform.position;
+        grabbed = true;
+    }
+
+    /*public void GrabbedR()
     {
         //ogHandRotR = rHand.transform.rotation;
         Vector3 normal = (initRot * Vector3.down).normalized;
         //previousAngle = Vector3.Dot(rHand.transform.eulerAngles, normal);
-        previousTrackerPos = rHand.transform.Find("Tracker").transform.position;
+        grabHand = rHand;
+        previousTrackerPos = grabHand.transform.Find("Tracker").transform.position;
+        
         grabbedR = true;
         grabbedL = false;
         //initDialRot = Vector3.Dot(ogHandRotR.eulerAngles, normal);
@@ -110,11 +136,13 @@ public class Dial : MonoBehaviour
         //ogHandRotR = rHand.transform.rotation;
         Vector3 normal = (initRot * Vector3.down).normalized;
         //previousAngle = Vector3.Dot(rHand.transform.eulerAngles, normal);
-        previousTrackerPos = lHand.transform.Find("Tracker").transform.position;
+        grabHand = lHand;
+        previousTrackerPos = grabHand.transform.Find("Tracker").transform.position;
+        
         grabbedL = true;
         grabbedR = false;
         //initDialRot = Vector3.Dot(ogHandRotR.eulerAngles, normal);
-    }
+    }*/
 
     public Dial initMaxiature(Transform hand)
     {
