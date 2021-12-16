@@ -80,6 +80,7 @@ public class GraspGrabber : Grabber
             grabbedObject.SetCurrentGrabber(null);
             grabbedObject.transform.parent = null;
             grabbedObject = null;
+            currentObject = null;
         }
     }
 

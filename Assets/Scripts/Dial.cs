@@ -10,7 +10,7 @@ public class Dial : MonoBehaviour
     Quaternion initRot;
     int degreeLimit = 160;
 
-    float dialRot = 0;
+    public float dialRot = 0;
 
     public bool grabbedR = false;
     public bool grabbedL = false;
