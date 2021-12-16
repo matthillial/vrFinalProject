@@ -35,7 +35,6 @@ public class Dial : MonoBehaviour
     {
         initRot = this.transform.rotation.normalized;
         Vector3 normal = (initRot * Vector3.down).normalized;
-        Debug.Log(normal);
 
 
     }

@@ -8,6 +8,14 @@ public class GraspGrabber : Grabber
     Grabbable currentObject;
     Grabbable grabbedObject;
     public bool canToggle;
+    public Transform RightController;
+    public Transform LeftController;
+    public Transform PositionOnGrab;
+    public Vector3 ControllerDiffOnGrab;
+    public Vector3 ScaleOnGrab;
+    Vector3 ControllerDiff;
+    bool scale;
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +23,7 @@ public class GraspGrabber : Grabber
         canToggle = true;
         grabbedObject = null;
         currentObject = null;
+        scale = false;
 
         grabAction.action.performed += Grab;
         grabAction.action.canceled += Release;
@@ -29,17 +38,23 @@ public class GraspGrabber : Grabber
     // Update is called once per frame
     void Update()
     {
-
+        if(scale)
+        {
+            ControllerDiff = RightController.position - LeftController.position;
+            grabbedObject.transform.localScale = new Vector3((Vector3.Magnitude(ControllerDiff) / Vector3.Magnitude(ControllerDiffOnGrab)) * ScaleOnGrab.x, (Vector3.Magnitude(ControllerDiff) / Vector3.Magnitude(ControllerDiffOnGrab)) * ScaleOnGrab.y, (Vector3.Magnitude(ControllerDiff) / Vector3.Magnitude(ControllerDiffOnGrab)) * ScaleOnGrab.z);
+        }
     }
 
     public override void Grab(InputAction.CallbackContext context)
-    {
+    { 
         canToggle = false;
         if (currentObject && grabbedObject == null)
         {
             if (currentObject.GetCurrentGrabber() != null)
             {
-                currentObject.GetCurrentGrabber().Release(new InputAction.CallbackContext());
+                Debug.Log("Two Handed");
+                scale = true;
+                //grabbedObject.GetComponent<IsGrabbed>().twoHand = true;
             }
 
             grabbedObject = currentObject;
@@ -58,7 +73,14 @@ public class GraspGrabber : Grabber
 
             grabbedObject.transform.parent = this.transform;
             Debug.Log("moving");
+
+            PositionOnGrab = this.transform;
+            ControllerDiffOnGrab = RightController.position - LeftController.position;
+            ScaleOnGrab = grabbedObject.transform.localScale;
         }
+
+
+
     }
 
     public override void Release(InputAction.CallbackContext context)
@@ -77,10 +99,14 @@ public class GraspGrabber : Grabber
                 grabbedObject.GetComponent<Dial>().Release(this.transform.rotation);
             }
 
+            grabbedObject.GetComponent<IsGrabbed>().padIsGrabbed = false;
+            grabbedObject.GetComponent<IsGrabbed>().twoHand = false;
+            scale = false;
             grabbedObject.SetCurrentGrabber(null);
             grabbedObject.transform.parent = null;
             grabbedObject = null;
             currentObject = null;
+
         }
     }
 
